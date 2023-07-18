@@ -80,5 +80,5 @@ jobs:
     - name: 上传kernel镜像
       uses: actions/upload-artifact@v3
       with:
-        name: boot${{ env.UPLOADNAME }}-${{ env.DEVICE }}-${{ env.BUILD_TIME }}
-        path: $GITHUB_WORKSPACE/kernel_workspace/tools/kernel.img
+        name: kernel
+        path: kernel_workspace/tools/kernel.img
