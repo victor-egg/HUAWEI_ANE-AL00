@@ -49,8 +49,8 @@ jobs:
         # export CROSS_COMPILE=aarch64-elf-
         # export CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
         export PATH=$PATH:$GITHUB_WORKSPACE/kernel_workspace/toolchain/bin
-        export CROSS_COMPILE=aarch64-linux-gnu- 
-        export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+        export CROSS_COMPILE="aarch64-linux-gnu-"
+        export CROSS_COMPILE_ARM32="arm-linux-gnueabi-"
         
     - name: 下载额外工具
       run: |
@@ -82,8 +82,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         mkdir ../out
-        make ARCH=arm64 O=../out os_defconfig
-        make ARCH=arm64 O=../out -j$(nproc --all)
+        make ARCH=arm64 CROSS_COMPILE="aarch64-linux-gnu-" O=../out os_defconfig
+        make ARCH=arm64 CROSS_COMPILE="aarch64-linux-gnu-" O=../out -j$(nproc --all)
 
     - name: 打包kernel镜像
       run: |
