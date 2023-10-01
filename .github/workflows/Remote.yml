@@ -33,6 +33,8 @@ jobs:
     - name: 下载编译器
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
+        sudo update-alternatives --remove-all gcc
+        sudo update-alternatives --remove-all g++
         wget -c https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-elf/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-elf.tar.xz  --no-check-certificate
         tar -xvf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-elf.tar.xz
         #git config --global --add safe.directory /github/workspace
