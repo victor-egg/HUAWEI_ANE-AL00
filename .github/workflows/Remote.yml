@@ -62,7 +62,7 @@ jobs:
     - name: 下载内核代码
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/turex/android_kernel_huawei_hi6250.git android-kernel --depth=1 -b upstream
+        git clone https://github.com/victor-egg/kernel_huawei_hi6250.git android-kernel --depth=1 -b selinuxonboot-patch
 
     - name: 下载原始kernel镜像
       run: |
@@ -82,7 +82,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         mkdir ../out
-        make ARCH=arm64 O=../out phenix_defconfig
+        make ARCH=arm64 O=../out os_defconfig
         make ARCH=arm64 O=../out -j$(nproc --all)
 
     - name: 打包kernel镜像
