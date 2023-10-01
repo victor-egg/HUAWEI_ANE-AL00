@@ -75,8 +75,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         mkdir ../out
-        make ARCH=arm64 O=../out os_defconfig
-        make ARCH=arm64 O=../out -j$(nproc --all)
+        make ARCH=arm64 CROSS_COMPILE=aarch64-elf- O=../out os_defconfig
+        make ARCH=arm64 CROSS_COMPILE=aarch64-elf- O=../out -j$(nproc --all)
 
     - name: 打包kernel镜像
       run: |
