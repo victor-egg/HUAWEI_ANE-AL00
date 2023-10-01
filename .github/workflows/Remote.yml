@@ -35,12 +35,13 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace
         wget -c https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-elf/gcc-linaro-7.5.0-2019.12-x86_64_aarch64-elf.tar.xz  --no-check-certificate
         tar -xvf gcc-linaro-7.5.0-2019.12-x86_64_aarch64-elf.tar.xz
-        git config --global --add safe.directory /github/workspace
-        apt install -y --no-install-recommends gcc-9 g++-9
-        ver_number="${compiler/gcc\/}"
-        ln -sf /usr/bin/gcc-"$ver_number" /usr/bin/gcc
-        ln -sf /usr/bin/g++-"$ver_number" /usr/bin/g++
-        ln -sf /usr/bin/arm-linux-gnueabi-gcc-"$ver_number" /usr/bin/arm-linux-gnueabi-gcc
+        #git config --global --add safe.directory /github/workspace
+        #apt install -y --no-install-recommends gcc-9 g++-9
+        #ver_number="${compiler/gcc\/}"
+        #echo ver_number
+        #ln -sf /usr/bin/gcc-"$ver_number" /usr/bin/gcc
+        #ln -sf /usr/bin/g++-"$ver_number" /usr/bin/g++
+        #ln -sf /usr/bin/arm-linux-gnueabi-gcc-"$ver_number" /usr/bin/arm-linux-gnueabi-gcc
         
     - name: 配置环境变量
       run: |
