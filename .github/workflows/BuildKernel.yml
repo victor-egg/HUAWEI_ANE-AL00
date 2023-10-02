@@ -45,7 +45,7 @@ jobs:
     - name: 下载内核代码
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone https://github.com/victor-egg/kernel_huawei_hi6250.git android-kernel --depth=1 -b selinuxonboot-patch
+        git clone https://github.com/victor-egg/kernel_huawei_hi6250.git android-kernel -b main
 
     - name: 下载原始kernel镜像
       run: |
