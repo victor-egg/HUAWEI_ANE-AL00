@@ -71,7 +71,7 @@ jobs:
         export CROSS_COMPILE=aarch64-linux-android-
         mkdir ../out
         make ARCH=arm64 O=../out os_defconfig
-        make ARCH=arm64 O=../out -j$(nproc --all)
+        make ARCH=arm64 -d O=../out -j$(nproc --all)
 
     - name: 打包kernel镜像
       run: |
