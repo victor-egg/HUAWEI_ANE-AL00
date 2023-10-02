@@ -34,13 +34,6 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9.git aarch64-linux-android-4.9 -b lineage-17.1 --depth=1
-       
-    - name: 配置环境变量
-      run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace
-        export PATH=$PATH:$GITHUB_WORKSPACE/kernel_workspace/aarch64-linux-android-4.9/bin
-        export CROSS_COMPILE=aarch64-linux-android-
-        aarch64-linux-android-gcc -v
         
     - name: 下载额外工具
       run: |
@@ -71,9 +64,12 @@ jobs:
     - name: 编译内核
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        export PATH=$PATH:$GITHUB_WORKSPACE/kernel_workspace/aarch64-linux-android-4.9/bin
+        export CROSS_COMPILE=aarch64-linux-android-
+        aarch64-linux-android-gcc -v
         mkdir ../out
         make ARCH=arm64 O=../out os_defconfig
-        make ARCH=arm64 CROSS_COMPILE=aarch64-linux-android- O=../out -j$(nproc --all)
+        make ARCH=arm64 O=../out -j$(nproc --all)
 
     - name: 打包kernel镜像
       run: |
