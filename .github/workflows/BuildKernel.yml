@@ -1,4 +1,4 @@
-name: Build Remote Kernel
+name: Build Kernel
 on: [workflow_dispatch]
 
 jobs:
@@ -66,7 +66,6 @@ jobs:
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$PATH:$GITHUB_WORKSPACE/kernel_workspace/aarch64-linux-android-4.9/bin
         export CROSS_COMPILE=aarch64-linux-android-
-        aarch64-linux-android-gcc -v
         mkdir ../out
         make ARCH=arm64 O=../out os_defconfig
         make ARCH=arm64 O=../out -j$(nproc --all)
