@@ -64,6 +64,8 @@ jobs:
     - name: 编译内核
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
+        free -m
+        dd if=/dev/zero of=/swapfile bs=1k count=204800
         chmod -R 777 $GITHUB_WORKSPACE/kernel_workspace/android-kernel
         export PATH=$PATH:$GITHUB_WORKSPACE/kernel_workspace/aarch64-linux-android-4.9/bin
         export CROSS_COMPILE=aarch64-linux-android-
